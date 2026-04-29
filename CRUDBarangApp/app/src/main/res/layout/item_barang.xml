@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="12dp"
-    android:layout_marginVertical="6dp"
-    app:cardCornerRadius="16dp"
-    app:cardElevation="6dp"
+    android:layout_marginVertical="8dp"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="8dp"
     app:cardBackgroundColor="@android:color/white"
-    app:strokeColor="#E0E0E0"
+    app:strokeColor="#E5EAF0"
     app:strokeWidth="1dp">
 
     <LinearLayout
@@ -18,50 +19,98 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- Nama Barang -->
-        <TextView
-            android:id="@+id/txtNama"
-            android:layout_width="wrap_content"
+        <!-- HEADER (Nama + Stok) -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nama Barang"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="#263238"/>
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
 
-        <!-- Harga -->
+            <TextView
+                android:id="@+id/txtNama"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Nama Barang Premium"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#1A237E"/>
+
+            <TextView
+                android:id="@+id/txtStok"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Stok 10"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="#2E7D32"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="4dp"
+                android:background="@drawable/bg_stok_chip"/>
+        </LinearLayout>
+
+        <!-- HARGA -->
         <TextView
             android:id="@+id/txtHarga"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
-            android:text="Rp 0"
-            android:textSize="17sp"
+            android:text="Rp 250.000"
+            android:textSize="19sp"
             android:textStyle="bold"
-            android:textColor="#1E88E5"/>
+            android:textColor="#E53935"/>
 
-        <!-- Stok -->
-        <TextView
-            android:id="@+id/txtStok"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:paddingHorizontal="10dp"
-            android:paddingVertical="4dp"
-            android:text="Stok: 0"
-            android:textSize="13sp"
-            android:textStyle="bold"
-            android:textColor="#2E7D32"
-            android:background="#E8F5E9"/>
+        <!-- GARIS PEMISAH -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="10dp"
+            android:background="#ECEFF1"/>
 
-        <!-- Deskripsi -->
+        <!-- DESKRIPSI -->
         <TextView
             android:id="@+id/txtDeskripsi"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Deskripsi barang"
+            android:text="Deskripsi barang singkat, jelas, dan tidak terlalu panjang agar tetap clean."
             android:textSize="14sp"
-            android:textColor="#607D8B"/>
+            android:textColor="#546E7A"
+            android:maxLines="2"
+            android:ellipsize="end"/>
+
+        <!-- ACTION -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:gravity="end">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:text="Edit"
+                android:textAllCaps="false"
+                android:textColor="#1E88E5"
+                app:strokeColor="#1E88E5"
+                app:strokeWidth="1dp"
+                app:cornerRadius="12dp"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnHapus"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_marginStart="8dp"
+                android:text="Hapus"
+                android:textAllCaps="false"
+                android:textColor="#E53935"
+                app:strokeColor="#E53935"
+                app:strokeWidth="1dp"
+                app:cornerRadius="12dp"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 

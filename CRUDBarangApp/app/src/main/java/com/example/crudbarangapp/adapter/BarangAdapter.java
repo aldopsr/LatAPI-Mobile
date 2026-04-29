@@ -4,13 +4,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.crudbarangapp.R;
 import com.example.crudbarangapp.model.Barang;
+import com.google.android.material.button.MaterialButton;
 
 import java.util.List;
 
@@ -19,15 +19,15 @@ public class BarangAdapter extends RecyclerView.Adapter<BarangAdapter.ViewHolder
     private List<Barang> listBarang;
     private OnItemClickListener listener;
 
-    // Constructor WAJIB pakai listener
     public BarangAdapter(List<Barang> listBarang, OnItemClickListener listener) {
         this.listBarang = listBarang;
         this.listener = listener;
     }
 
-    // Interface klik item
+    // ✅ UPDATE INTERFACE (2 METHOD)
     public interface OnItemClickListener {
-        void onClick(Barang barang);
+        void onEdit(Barang barang);
+        void onDelete(Barang barang);
     }
 
     @NonNull
@@ -47,10 +47,17 @@ public class BarangAdapter extends RecyclerView.Adapter<BarangAdapter.ViewHolder
         holder.txtStok.setText("Stok : " + barang.getStok());
         holder.txtDeskripsi.setText(barang.getDeskripsi());
 
-        // klik item
-        holder.itemView.setOnClickListener(v -> {
+        // ✅ tombol EDIT
+        holder.btnEdit.setOnClickListener(v -> {
             if (listener != null) {
-                listener.onClick(barang);
+                listener.onEdit(barang);
+            }
+        });
+
+        // ✅ tombol HAPUS
+        holder.btnHapus.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onDelete(barang);
             }
         });
     }
@@ -61,14 +68,21 @@ public class BarangAdapter extends RecyclerView.Adapter<BarangAdapter.ViewHolder
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
+
         TextView txtNama, txtHarga, txtStok, txtDeskripsi;
+        MaterialButton btnEdit, btnHapus;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+
             txtNama = itemView.findViewById(R.id.txtNama);
             txtHarga = itemView.findViewById(R.id.txtHarga);
             txtStok = itemView.findViewById(R.id.txtStok);
             txtDeskripsi = itemView.findViewById(R.id.txtDeskripsi);
+
+            // ✅ ambil tombol dari XML kamu
+            btnEdit = itemView.findViewById(R.id.btnEdit);
+            btnHapus = itemView.findViewById(R.id.btnHapus);
         }
     }
 }
